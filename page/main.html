@@ -1,0 +1,78 @@
+<!DOCTYPE HTMl>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>School Timetable Editor</title>
+	<link rel="stylesheet" type="text/css" href="style/styles.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body style="background-color: black;">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Редактор Школьного Расписания
+
+    <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+  <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+</svg>
+
+Главное-->
+
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="id_btn_subject">Предметы</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="id_btn_teacher">Учителя</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="id_btn_class">Классы</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Расписание
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="id_class_list">
+          <!--<a class="dropdown-item" href="#">Action</a>-->
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://t.me/ssmart47" target="blank">Связаться с разработчиком</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+
+      <a href="../index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+  <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg><font style="color: white;">ВЫЙТИ (</font><font style="color: white;" id="id_exit_uname"></font><font style="color: white;">)</font>
+  </a>
+
+    </form>
+  </div>
+</nav>
+
+<br><br>
+
+<center>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="gray" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" offset-path="100"></path>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>
+<br><br>
+<font id="id_users_name" class="css-main-logo"></font>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

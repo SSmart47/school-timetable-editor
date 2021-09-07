@@ -1,0 +1,234 @@
+<!DOCTYPE HTMl>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>School Timetable Editor</title>
+	<link rel="stylesheet" type="text/css" href="style/styles.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body style="background-color: black;">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Редактор Школьного Расписания
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+  <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+</svg>
+Расписание (<my id="id_class_id"></my>)
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="id_btn_back">НАЗАД</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<br>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col" colspan="5" style="text-align: center;font-weight: 900;font-size: 20px;background-color: rgba(255,255,255,0.2);">Понедельник</th>
+    </tr>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"></th>
+      <th scope="col">ИМЯ ПРЕДМЕТА</th>
+      <th scope="col">ИМЯ УЧИТЕЛЯ</th>
+      <th scope="col"><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="id_add_lesson_monday" onclick="PressedAddLesson('monday')">Добавить урок</button></th>
+    </tr>
+  </thead>
+  <tbody id="id_list_monday">
+    
+  </tbody>
+</table>
+<br><br>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col" colspan="5" style="text-align: center;font-weight: 900;font-size: 20px;background-color: rgba(255,255,255,0.2);">Вторник</th>
+    </tr>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"></th>
+      <th scope="col">ИМЯ ПРЕДМЕТА</th>
+      <th scope="col">ИМЯ УЧИТЕЛЯ</th>
+      <th scope="col"><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="id_add_lesson_monday" onclick="PressedAddLesson('tuesday')">Добавить урок</button></th>
+    </tr>
+  </thead>
+  <tbody id="id_list_tuesday">
+    
+  </tbody>
+</table>
+<br><br>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col" colspan="5" style="text-align: center;font-weight: 900;font-size: 20px;background-color: rgba(255,255,255,0.2);">Среда</th>
+    </tr>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"></th>
+      <th scope="col">ИМЯ ПРЕДМЕТА</th>
+      <th scope="col">ИМЯ УЧИТЕЛЯ</th>
+      <th scope="col"><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="id_add_lesson_monday" onclick="PressedAddLesson('wednesday')">Добавить урок</button></th>
+    </tr>
+  </thead>
+  <tbody id="id_list_wednesday">
+    
+  </tbody>
+</table>
+
+<br><br>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col" colspan="5" style="text-align: center;font-weight: 900;font-size: 20px;background-color: rgba(255,255,255,0.2);">Четверг</th>
+    </tr>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"></th>
+      <th scope="col">ИМЯ ПРЕДМЕТА</th>
+      <th scope="col">ИМЯ УЧИТЕЛЯ</th>
+      <th scope="col"><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="id_add_lesson_monday" onclick="PressedAddLesson('thirsday')">Добавить урок</button></th>
+    </tr>
+  </thead>
+  <tbody id="id_list_thirsday">
+    
+  </tbody>
+</table>
+
+<br><br>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col" colspan="5" style="text-align: center;font-weight: 900;font-size: 20px;background-color: rgba(255,255,255,0.2);">Пятница</th>
+    </tr>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"></th>
+      <th scope="col">ИМЯ ПРЕДМЕТА</th>
+      <th scope="col">ИМЯ УЧИТЕЛЯ</th>
+      <th scope="col"><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="id_add_lesson_monday" onclick="PressedAddLesson('friday')">Добавить урок</button></th>
+    </tr>
+  </thead>
+  <tbody id="id_list_friday">
+    
+  </tbody>
+</table>
+
+<br><br>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col" colspan="5" style="text-align: center;font-weight: 900;font-size: 20px;background-color: rgba(255,255,255,0.2);">Суббота</th>
+    </tr>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"></th>
+      <th scope="col">ИМЯ ПРЕДМЕТА</th>
+      <th scope="col">ИМЯ УЧИТЕЛЯ</th>
+      <th scope="col"><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="id_add_lesson_monday" onclick="PressedAddLesson('saturday')">Добавить урок</button></th>
+    </tr>
+  </thead>
+  <tbody id="id_list_saturday">
+    
+  </tbody>
+</table>
+
+<br><br>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col" colspan="5" style="text-align: center;font-weight: 900;font-size: 20px;background-color: rgba(255,255,255,0.2);">Воскресенье</th>
+    </tr>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"></th>
+      <th scope="col">ИМЯ ПРЕДМЕТА</th>
+      <th scope="col">ИМЯ УЧИТЕЛЯ</th>
+      <th scope="col"><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="id_add_lesson_monday" onclick="PressedAddLesson('sunday')">Добавить урок</button></th>
+    </tr>
+  </thead>
+  <tbody id="id_list_sunday">
+    
+  </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="border-color: aqua;">
+      <div class="modal-header" style="background-color: black;">
+        <h5 class="modal-title" id="exampleModalLabel" style="color:white;">Добавить Урок</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+          <span aria-hidden="true" style="color: white;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color: black; color: white; font-weight: 500; font-size: 20px;">
+        <br>
+        <center>
+          <div style="background-color: rgba(255,255,255,0.1); font-size: 16px;margin-bottom: 10px;">Предмет</div>
+        	<select class="custom-select" style="background-color: black;color: white;border-color: white;" id="id_select_1">
+          </select>
+          <br><br>
+          <div style="background-color: rgba(255,255,255,0.1); font-size: 16px;margin-bottom: 10px;">Учитель</div>
+          <select class="custom-select" style="background-color: black;color: white;border-color: white;" id="id_select_2">
+          </select>
+        </center>
+        <br>
+      </div>
+      <div class="modal-footer" style="background-color: black;">
+        <button type="button" class="btn btn-dark" data-dismiss="modal" id="id_btn_add_science">Добавить</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Отмена</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="border-color: aqua;">
+      <div class="modal-header" style="background-color: black;">
+        <h5 class="modal-title" id="exampleModalLabelSecond" style="color:white;">Изменить Урок</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+          <span aria-hidden="true" style="color: white;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color: black; color: white; font-weight: 500; font-size: 20px;">
+        <br>
+        <center>
+          <div style="background-color: rgba(255,255,255,0.1); font-size: 16px;margin-bottom: 10px;">Предмет</div>
+          <select class="custom-select" style="background-color: black;color: white;border-color: white;" id="id_select_3">
+          </select>
+          <br><br>
+          <div style="background-color: rgba(255,255,255,0.1); font-size: 16px;margin-bottom: 10px;">Учитель</div>
+          <select class="custom-select" style="background-color: black;color: white;border-color: white;" id="id_select_4">
+          </select>
+        </center>
+        <br>
+      </div>
+      <div class="modal-footer" style="background-color: black;">
+        <button type="button" class="btn btn-dark" data-dismiss="modal" id="id_btn_change_science">Изменить</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Отмена</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
